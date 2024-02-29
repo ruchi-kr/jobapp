@@ -20,7 +20,7 @@ const Apply_JobSchema = new mongoose.Schema(
     },
     resume: {
       type: String,
-      required: [true, "Resume required"],
+      // required: [true, "Resume required"],
     },
     
   },

@@ -16,6 +16,7 @@ import UserHomePage from './Pages/UserHomePage';
 import AddJob from './Pages/AddJob';
 import TopJobs from './Pages/TopJobs';
 import ApplyJob from './Pages/ApplyJob';
+import Dashboard from './Pages/Dashboard';
 
 function App() {                                  //App component
   return (                                       //returning the JSX
@@ -24,6 +25,7 @@ function App() {                                  //App component
       <Navbar />
         <Routes>                               
           <Route path="/" element={<HomePage />}></Route>
+          <Route exact path="/homepage" element={<HomePage />}></Route>
           <Route exact path="/login" element={<Login />}></Route>
           <Route exact path="/register" element={<Register />}></Route>
           <Route exact path="/forgotpassword" element={<ForgotPassword />}></Route>
@@ -34,6 +36,7 @@ function App() {                                  //App component
           <Route exact path="/addjob" element={<AddJob />}></Route>
           <Route exact path="/topjobs" element={<TopJobs />}></Route>
           <Route path='/applyjob' element={<ApplyJob />}></Route>
+          <Route exact path="/admindashboard" element={<Dashboard />}></Route>
           <Route exact path="*" element={<PageNotFound />}></Route>
         </Routes>
         <Footer/>

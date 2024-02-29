@@ -7,7 +7,7 @@ const UserModel = mongoose.model("UserModel");
 const { JWT_SECRET } = require('../config');
 
 router.post("/register", (req, res) => {
-    const { firstName,lastName, email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body;
     if (!firstName || !lastName || !password || !email) {
         return res.status(400).send({ error: "One or more mandatory fields are empty" });
     }
@@ -18,7 +18,7 @@ router.post("/register", (req, res) => {
             }
             bcryptjs.hash(password, 16)
                 .then((hashedPassword) => {
-                    const user = new UserModel({ firstName,lastName, email, password: hashedPassword});
+                    const user = new UserModel({ firstName, lastName, email, password: hashedPassword });
                     user.save()
                         .then((newUser) => {
                             res.status(201).send({ result: "User Registered Successfully!" });
@@ -71,7 +71,7 @@ router.post("/forgotpassword", (req, res) => {
             if (!userInDB) {
                 return res.send({ Status: "User does not exist" })
             }
-            const token = jwt.sign({_id: userInDB._id }, JWT_SECRET, { expiresIn: "2d" })
+            const token = jwt.sign({ _id: userInDB._id }, JWT_SECRET, { expiresIn: "2d" })
 
             let transporter = nodemailer.createTransport({
                 service: 'gmail',
@@ -103,5 +103,17 @@ router.post("/forgotpassword", (req, res) => {
 
 })
 
+router.get('/allusers', async (req, res) => {
+    const data = await UserModel.find({})
+        .then((users) => {
+            // res.send(users)
+            const total_users = data.length;
+            console.log("data", data);
+            return res.status(200).json({ data, total: total_users });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+})
 
 module.exports = router;

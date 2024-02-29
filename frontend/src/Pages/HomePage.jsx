@@ -10,23 +10,38 @@ import Fuse from 'fuse.js';
 const HomePage = () => {                                   //HomePage component
     const [allJob, setAllJob] = useState([]);
     const [search, setSearch] = useState('');
+    const [searchlocation, setSearchLocation] = useState('');
 
     const fuse = new Fuse(allJob, {
         keys: ['title', 'companyname', 'skills'],
         includeScore: true
     })
-
+    const fuse2 = new Fuse(allJob, {
+        keys: ['location'],
+        includeScore: true
+    })
     const result = fuse.search(search);
-    const outputSearch = search ? result.map(item => item.item) : allJob;
+    // const result = fuse.search(search );
+    // const result = fuse.search(search) || fuse2.search(searchlocation);
+    const result2= fuse2.search(searchlocation);
+    console.log("alllobbbbbb",allJob)
+
+    const outputSearch = search ? result.map(item => item.item) : searchlocation ? result2.map(item => item.item) : allJob;
+    // const outputSearch = (search||searchlocation) ? result.map(item => item.item) : allJob;
+
     const handleOnSearch = ({ currentTarget = {} }) => {
         const { value } = currentTarget;
         setSearch(value);
+    }
+    const handleOnSearchlocation = ({ currentTarget = {} }) => {
+        const { value } = currentTarget;
+        setSearchLocation(value);
     }
 
     useEffect(() => {
         const getAllJob = async () => {
             const response = await axios.get(`${API_BASE_URL}/addjob`)
-            setAllJob(response.data);
+            setAllJob(response.data.data);
             console.log("ourdata", response.data);
         }
         getAllJob()
@@ -35,18 +50,17 @@ const HomePage = () => {                                   //HomePage component
 
     return (
         <>
-            <div className='text-center relative'>
-                <img className='img-fluid w-100' style={{ filter: 'blur(2.5px)' }} src="https://knovator.com/wp-content/uploads/2020/11/1_PIg3Qg3CGap_i4xRWGAktw.png" alt="jobprtalbanner" />
-                <div>
-                    <h1 className="display-2 heading absolute" style={{ color: '#ffa600' }}>Find your dream job now</h1>
-                    <div>
-
-                        <form className="d-flex col-3 mx-auto align-items-center shadow-sm border border-light-subtle rounded-5 py-2 px-4 " role="search">
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                            <input className="form-control me-2 border-0" type="search" onChange={handleOnSearch} value={search} placeholder="Enter skills/Designation/companies..." aria-label="Search" />
-                            <button className="btn rounded-5 border-0 btn-dark btnHoverOrange" type="submit">Search</button>
-                        </form>
-                    </div>
+            <div className='text-center position-relative'>
+                <img className='img-fluid w-100' style={{ filter: 'blur(5px)' }} src="https://knovator.com/wp-content/uploads/2020/11/1_PIg3Qg3CGap_i4xRWGAktw.png" alt="jobprtalbanner" />
+                <div className='position-absolute imgtopcontent'>
+                    <h1 className="display-2 fw-bolder heading mb-3" style={{ color: '#ffa600' }}>Find your dream job now</h1>
+                    <form className="d-flex col-10 py-3 mx-auto align-items-center shadow-sm border bg-light border-light-subtle rounded-5 py-2 px-4 " role="search">
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        <input className="form-control me-2 border-0 bg-light" type="search" onChange={handleOnSearch} value={search} placeholder="Skills/Designation/Companies..." aria-label="Search" />
+                        <p className='my-1 text-secondary'>|</p>
+                        <input className="form-control me-2 border-0 bg-light" type="search" onChange={handleOnSearchlocation} value={searchlocation} placeholder="Enter Location..." aria-label="Search" />
+                        <button className="btn rounded-5 border-0 btn-dark btnHoverOrange" type="submit">Search</button>
+                    </form>
                 </div>
             </div >
             <div className="container">

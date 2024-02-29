@@ -5,6 +5,13 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 export default function AddJob() {
 
+  const CONFIG_OBJ = {                                         //config object
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("employertoken")
+    }
+  }
+
   const [title, setTitle] = useState('')
   const [companyName, setCompanyName] = useState('')
   const [skills, setSkills] = useState('')

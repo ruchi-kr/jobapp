@@ -22,10 +22,15 @@ require('./models/employer_model');                    //importing employer mode
 
 app.use(require('./routes/user_route'));              //importing user route
 app.use(require('./routes/employer_route'));          //importing employer route
+
 const Add_Jobs_Router = require('./routes/jobs_route');
-app.use('/addjob', Add_Jobs_Router);             //importing jobs route
+app.use('/addjob', Add_Jobs_Router);                      //importing jobs route
+// app.use('/totaldata', Add_Jobs_Router);
+app.use(require('./routes/jobs_route'));
+
 const Apply_Jobs_Router = require('./routes/apply_jobs_route');
 app.use("/applyjob", Apply_Jobs_Router);
+
 
 app.listen(5000, () => {                                 //listening on port 5000
     console.log("Server has started on port 5000");

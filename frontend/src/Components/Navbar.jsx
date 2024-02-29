@@ -53,9 +53,22 @@ const Navbar = () => {                                             //Navbar comp
                                     :
                                     <>
                                         <Link to='/topjobs' className="nav-link border-0 btn-dark btnHoverOrange" >TOP JOBS</Link>
-                                        <Link to="/login" className="nav-link border-0 btn-dark btnHoverOrange" >LOGIN</Link>
-                                        <Link to="/register" className="nav-link border-0 btn-dark btnHoverOrange" >REGISTER</Link>
-                                        <Link to="/admin" className="nav-link border-0 btnHoverOrange" >
+                                        <Link to='/admindashboard' className="nav-link border-0 btn-dark btnHoverOrange" >ADMIN</Link>
+                                       
+                                        {/* for job seeker */}
+                                        <div  className="nav-link border-0 btnHoverOrange" >
+                                            <div className="btn-group btn-sm" role="group">
+                                                <button type="button" className="btn btn-white border-0 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    JOB SEEKER
+                                                </button>
+                                                <ul className="dropdown-menu">
+                                                    <li> <Link to="/login" className="nav-link border-0 btn-dark btnHoverOrange" >LOGIN</Link></li>
+                                                    <li><Link to="/register" className="nav-link border-0 btn-dark btnHoverOrange" >REGISTER</Link></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        {/* for employer */}
+                                        <div  className="nav-link border-0 btnHoverOrange" >
                                             <div className="btn-group btn-sm" role="group">
                                                 <button type="button" className="btn btn-white border-0 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                     FOR EMPLOYER
@@ -65,7 +78,7 @@ const Navbar = () => {                                             //Navbar comp
                                                     <li><Link className="dropdown-item" to="/employerLogin">LOGIN</Link></li>
                                                 </ul>
                                             </div>
-                                        </Link>
+                                        </div>
                                     </>
                             }
                         </div>

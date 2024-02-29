@@ -9,6 +9,9 @@ const serverpath = multer.diskStorage({
     const newFilename = `${uuidv4()}${file.originalname.substring(file.originalname.lastIndexOf('.'))}`
       cb(null, newFilename);
   },  
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  }
 });
 
 const fileFilter= (req, file, cb) => {
@@ -16,7 +19,7 @@ const fileFilter= (req, file, cb) => {
     {
       return cb(null, true);
     } else {
-      return cb(new Error("Only PDF and Docs files are allowed"));
+      return cb(new Error("Only PDF and Docx files are allowed"));
     }
   }
 
