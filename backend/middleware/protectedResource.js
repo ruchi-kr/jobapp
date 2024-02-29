@@ -3,7 +3,7 @@ const {JWT_SECRET} = require('../config');                         //importing J
 
 const mongoose = require("mongoose");                              //importing mongoose
 const UserModel = mongoose.model("UserModel");                     //importing UserModel
-const EmployerModel = mongoose.model("EmployerModel");s
+const EmployerModel = mongoose.model("EmployerModel");
 
 module.exports = (req, res, next)=>{
     const {authorization} = req.headers;

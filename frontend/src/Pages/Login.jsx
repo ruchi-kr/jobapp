@@ -28,7 +28,7 @@ const Login = () => {                              //Login component
                     dispatch({ type: 'LOGIN_SUCCESS', payload: result.data.result.user });
                     setLoading(false);
                     toast.success('User Logged In Successfully!');
-                    navigate('/');
+                    navigate('/userhomepage');
 
                 }
             })

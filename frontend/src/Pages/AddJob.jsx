@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from 'axios';
 import { API_BASE_URL } from '../config'
-
-export default function Add_Jobs() {
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+export default function AddJob() {
 
   const [title, setTitle] = useState('')
   const [companyName, setCompanyName] = useState('')
@@ -15,6 +16,7 @@ export default function Add_Jobs() {
   const [description, setDescription] = useState('')
   const [aboutCompany, setAboutCompany] = useState('')
 
+  const navigate = useNavigate();
   const handleSubmit = async () => {
     // alert(API_BASE_URL)
     let body = {
@@ -30,8 +32,9 @@ export default function Add_Jobs() {
       aboutcompany: aboutCompany
     }
 
-    await axios.post(`${API_BASE_URL}/addjob`, body)
-    alert('Job Added')
+    await axios.post(`${API_BASE_URL}/addjob`, body);
+    toast.success('Job Added Successfully!');
+    navigate('/employerhomepage')
   }
 
   const handleReset = () => {

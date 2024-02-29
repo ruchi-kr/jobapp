@@ -24,6 +24,7 @@ const EmployerRegister = () => {                             //Register componen
             .then((result) => {
                 if (result.status === 201) {
                     setLoading(false);
+                    localStorage.setItem('employer', JSON.stringify(requestData));
                     toast.success('Employer Registered Successfully !');
                 }
                 setFullName('');

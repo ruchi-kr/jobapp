@@ -1,4 +1,4 @@
-import './App.css';
+import './App.css';                  //importing App.css
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';//importing BrowserRouter, Routes, Route from react-router-dom
 
 import Navbar from './Components/Navbar';          //importing Navbar component
@@ -12,7 +12,10 @@ import PageNotFound from './Pages/PageNotFound';
 import EmployerRegister from './Pages/EmployerRegister';
 import EmployerLogin from './Pages/EmployerLogin';
 import EmployerHomePage from './Pages/EmployerHomePage';
+import UserHomePage from './Pages/UserHomePage';
 import AddJob from './Pages/AddJob';
+import TopJobs from './Pages/TopJobs';
+import ApplyJob from './Pages/ApplyJob';
 
 function App() {                                  //App component
   return (                                       //returning the JSX
@@ -27,7 +30,10 @@ function App() {                                  //App component
           <Route exact path="/employerRegister" element={<EmployerRegister />}></Route>
           <Route exact path="/employerLogin" element={<EmployerLogin />}></Route>
           <Route exact path="/employerhomepage" element={<EmployerHomePage />}></Route>
+          <Route exact path="/userhomepage" element={<UserHomePage />}></Route>
           <Route exact path="/addjob" element={<AddJob />}></Route>
+          <Route exact path="/topjobs" element={<TopJobs />}></Route>
+          <Route path='/applyjob' element={<ApplyJob />}></Route>
           <Route exact path="*" element={<PageNotFound />}></Route>
         </Routes>
         <Footer/>

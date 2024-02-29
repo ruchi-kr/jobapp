@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom' //importing Link from react-route
 
 import axios from 'axios'
 import { API_BASE_URL } from '../config'
-// import Swal from 'sweetalert2'
-
+import { toast } from 'react-toastify';
 const ForgotPassword = () => {                              //Login component
     const [email, setEmail] = useState("");
     const navigate = useNavigate();
@@ -13,23 +12,14 @@ const ForgotPassword = () => {                              //Login component
         
         axios.post(`${API_BASE_URL}/forgotpassword`, { email })
             .then((result) => {
-                if (result.status === 200) {
-                       
-                    // Swal.fire({
-                    //     icon: 'success',
-                    //     title: 'Email Sent Successfully'
-                    // })
+                if (result.status === 200) {                
+                    toast.succes('Email Sent Successfully');
                     navigate('/login');
-
                 }
             })
             .catch((error) => {
                 console.log(error);
-                
-                // Swal.fire({
-                //     icon: 'error',
-                //     title: error.response.data.error
-                // })
+                toast.error('Email not sent');
             })
     }
 

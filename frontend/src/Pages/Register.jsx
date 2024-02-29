@@ -25,6 +25,7 @@ const Register = () => {                             //Register component
             .then((result) => {
                 if (result.status === 201) {
                     setLoading(false);
+                    localStorage.setItem('studentuser', JSON.stringify(requestData));
                     toast.success('User Registered Successfully !');
                 }
                 setFirstName('');

@@ -14,8 +14,7 @@ const Add_JobsSchema = new mongoose.Schema(
     skills: {
       type: String,
       require: [true, "Skills are required"],
-    },
-   
+    },   
     salary: {
       type: String,
       require: [false, "Skills are required"],
