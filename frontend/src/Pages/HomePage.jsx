@@ -66,7 +66,7 @@ const HomePage = () => {                                   //HomePage component
                         <input className="form-control me-2 border-0 bg-light searchinput" type="search" onChange={handleOnSearch} value={search} placeholder="Skills/Designation/Companies..." aria-label="Search" />
                         <p className='my-1 text-secondary'>|</p>
                         <input className="form-control me-2 border-0 bg-light searchinput" type="search" onChange={handleOnSearchlocation} value={searchlocation} placeholder="Enter Location..." aria-label="Search" />
-                        <button className="btn rounded-5 border-0 btn-dark btnHoverOrange" type="submit">Search</button>
+                        {/* <button className="btn rounded-5 border-0 btn-dark btnHoverOrange" type="submit">Search</button> */}
                     </form>
                 </div>
             </div >

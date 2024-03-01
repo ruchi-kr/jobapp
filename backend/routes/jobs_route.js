@@ -1,6 +1,3 @@
-// const mongoose = require("mongoose");
-const protectedRoute = require("../middleware/protectedResource");
-
 const express = require("express")
 const { getData, postData, deleteData, patchData } = require("../controllers/add_jobs_controllers")
 const Add_jobs_Model = require("../models/jobs_model");
@@ -13,6 +10,7 @@ router.get('/', getData)
 router.post('/',employerprotectedResource,postData)
 router.delete('/:id',employerprotectedResource,deleteData)
 router.patch('/:id',employerprotectedResource,patchData)
+
 
 // top jobs only based on salary
 router.get("/topjobs", async (req, res) => {

@@ -21,7 +21,7 @@ export default function AddJob() {
   const [location, setLocation] = useState('')
   const [experience, setExperience] = useState('')
   const [description, setDescription] = useState('')
-  const [aboutCompany, setAboutCompany] = useState('')
+  const [aboutJobType, setAboutJobType] = useState('')
 
   const navigate = useNavigate();
   const handleSubmit = async () => {
@@ -36,7 +36,7 @@ export default function AddJob() {
       location: location,
       experience: experience,
       description: description,
-      aboutcompany: aboutCompany
+      aboutJobType: aboutJobType
     }
 
     await axios.post(`${API_BASE_URL}/addjob`, body, CONFIG_OBJ);
@@ -54,7 +54,7 @@ export default function AddJob() {
     setExperience('')
     setDescription('')
     setCompanyName('')
-    setAboutCompany('')
+    setAboutJobType('')
   }
 
   return (
@@ -67,10 +67,10 @@ export default function AddJob() {
             type="text"
             className="form-control"
             id="exampleFormControlInput1"
-            placeholder="Title"
+            placeholder="Job title*"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-          />
+          required/>
         </div>
 
         <div className="mb-3">
@@ -78,10 +78,10 @@ export default function AddJob() {
             type="text"
             className="form-control"
             id="exampleFormControlInput2"
-            placeholder="Enter Company Name"
+            placeholder="Enter Company Name*"
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
-          />
+          required/>
         </div>
 
         <div className="mb-3">
@@ -89,10 +89,10 @@ export default function AddJob() {
             type="text"
             className="form-control"
             id="exampleFormControlInput3"
-            placeholder="Skills Required"
+            placeholder="Skills Required*"
             value={skills}
             onChange={(e) => setSkills(e.target.value)}
-          />
+          required/>
         </div>
 
         <div className="mb-3">
@@ -111,10 +111,10 @@ export default function AddJob() {
             type="date"
             className="form-control"
             id="exampleFormControlInput3"
-            placeholder=" Job Posted"
+            placeholder=" Job Posted*"
             value={jobPosted}
             onChange={(e) => setJobPosted(e.target.value)}
-          />
+          required/>
         </div>
 
         <div className="mb-3">
@@ -133,15 +133,15 @@ export default function AddJob() {
             type="text"
             className="form-control"
             id="exampleFormControlInput3"
-            placeholder="Location"
+            placeholder="Location*"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-          />
+          required />
         </div>
 
         <div className="mb-3">
           <input
-            type="text"
+            type="number"
             className="form-control"
             id="exampleFormControlInput3"
             placeholder="Experience"
@@ -162,14 +162,13 @@ export default function AddJob() {
         </div>
 
         <div className="mb-3">
-          <input
-            type="text"
-            className="form-control"
-            id="exampleFormControlInput3"
-            placeholder="About Company"
-            value={aboutCompany}
-            onChange={(e) => setAboutCompany(e.target.value)}
-          />
+          <select className="form-select" aria-label="Default select example" value={aboutJobType}
+            onChange={(e) => setAboutJobType(e.target.value)}>
+            <option selected>Select Job Type</option>
+            <option value={'tech'}>Tech</option>
+            <option value={'non-tech'}>Non-Tech</option>
+          </select>
+
         </div>
 
         <div className="d-grid gap-3 my-3">

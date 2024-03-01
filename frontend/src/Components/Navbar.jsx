@@ -51,51 +51,52 @@ const Navbar = () => {                                             //Navbar comp
                         <div className="navbar-nav m-1">
 
                             {user ? <>
-                                <Link to='/topjobs' className="nav-link border-0 btn-dark btnHoverOrange" >TOP JOBS</Link>
-                                <Link to='/userhomepage' className="nav-link border-0 btnHoverOrange" >MY ACCOUNT</Link>
-                                <Link to="/" className="nav-link " onClick={() => logout()}>LOGOUT</Link>
-                                <button onClick={toggleTheme} className="btn  border border-0" type="button">Mode</button>
+                                
+                                    <Link to='/topjobs' className="nav-link border-0 btnHoverOrange" >TOP JOBS</Link>
+                                    <Link to='/userhomepage' className="nav-link border-0 btnHoverOrange" >MY ACCOUNT</Link>
+                                    <Link to="/" className="nav-link btnHoverOrange" onClick={() => logout()}>LOGOUT</Link>
+                                    <button onClick={toggleTheme} className="btn rounded-0 text-secondary btnHoverOrange border-0" type="button">Mode</button>
+                               
                             </>
                                 :
                                 employer ? <>
-                                 <Link to='/topjobs' className="nav-link border-0 btn-dark btnHoverOrange" >TOP JOBS</Link>
-                                    <Link to='/employerhomepage' className="nav-link border-0 btnHoverOrange" >MY ACCOUNT</Link>
-                                    <Link to="/" className="nav-link " onClick={() => logout()}>LOGOUT</Link>
-                                    <button onClick={toggleTheme} className="btn  border border-0" type="button">Mode</button>
+                                    
+                                        <Link to='/topjobs' className="nav-link border-0 btnHoverOrange" >TOP JOBS</Link>
+                                        <Link to='/employerhomepage' className="nav-link border-0 btnHoverOrange" >MY ACCOUNT</Link>
+                                        <Link to="/" className="nav-link btnHoverOrange" onClick={() => logout()}>LOGOUT</Link>
+                                        <button onClick={toggleTheme} className="btn rounded-0 text-secondary btnHoverOrange border-0" type="button">Mode</button>
+                                   
                                 </>
                                     :
                                     <>
-                                        <Link to='/topjobs' className="nav-link border-0 btn-dark btnHoverOrange" >TOP JOBS</Link>
-                                        <Link to='/adminlogin' className="nav-link border-0 btn-dark btnHoverOrange" >ADMIN</Link>
-
-                                        {/* for job seeker */}
-                                        <div className="nav-link border-0 btnHoverOrange" >
-                                            <div className="btn-group btn-sm" role="group">
-                                                <button type="button" className="btn btn-white border-0 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    JOB SEEKER
-                                                </button>
+                                        
+                                            <Link to='/topjobs' className="nav-link border-0 btnHoverOrange" >TOP JOBS</Link>
+                                            {/* for job seeker */}
+                                            <div className="nav-item border-0 btnHoverOrange dropdown" role="group">
+                                                <a class="nav-link dropdown-toggle fontcolor" href="#" role="button" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    For JobSeeker
+                                                </a>
                                                 <ul className="dropdown-menu">
-                                                    <li> <Link to="/login" className="nav-link border-0 btn-dark btnHoverOrange" >LOGIN</Link></li>
-                                                    <li><Link to="/register" className="nav-link border-0 btn-dark btnHoverOrange" >REGISTER</Link></li>
+                                                    <li><Link to="/register" className="nav-link border-0 btnHoverOrange" >REGISTER</Link></li>
+                                                    <li> <Link to="/login" className="nav-link border-0 btnHoverOrange" >LOGIN</Link></li>
                                                 </ul>
                                             </div>
-                                        </div>
-                                        {/* for employer */}
-                                        <div className="nav-link border-0 btnHoverOrange" >
-                                            <div className="btn-group btn-sm" role="group">
-                                                <button type="button" className="btn btn-white border-0 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    FOR EMPLOYER
-                                                </button>
+                                            {/* for employer */}
+                                            <div className="nav-item border-0 btnHoverOrange dropdown" role="group">
+                                                <a class="nav-link dropdown-toggle fontcolor" href="#" role="button" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    For Employer
+                                                </a>
                                                 <ul className="dropdown-menu">
-                                                    <li><Link className="dropdown-item" to="/employerRegister">REGISTER</Link></li>
-                                                    <li><Link className="dropdown-item" to="/employerLogin">LOGIN</Link></li>
+                                                    <li><Link className="nav-link btnHoverOrange" to="/employerRegister">REGISTER</Link></li>
+                                                    <li><Link className="nav-link btnHoverOrange" to="/employerLogin">LOGIN</Link></li>
                                                 </ul>
                                             </div>
-                                        </div>
-                                        {/* dark light mode */}
-
-                                        <button onClick={toggleTheme} className="btn  border border-0" type="button">Mode</button>
-
+                                            <Link to='/adminlogin' className="nav-link border-0 btnHoverOrange" >ADMIN</Link>
+                                            {/* dark light mode */}
+                                            <button onClick={toggleTheme} className="btn rounded-0 text-secondary btnHoverOrange border-0" type="button">Mode</button>
+                                        
                                     </>
                             }
                         </div>

@@ -25,7 +25,7 @@ const postData = async (req, res) => {
       location: req.body.location,
       experience: req.body.experience,
       description: req.body.description,
-      aboutcompany: req.body.aboutcompany,
+      aboutJobType: req.body.aboutJobType,
     })
     res.status(200).json({ msg: 'Added Successfully' })
     console.log("data:", data)

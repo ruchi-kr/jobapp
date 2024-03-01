@@ -6,7 +6,7 @@
   font-style: normal;
 }
 /* apply button css */
-.applybtn{
+.applybtn {
   position: relative;
   z-index: 1;
 }
@@ -40,84 +40,98 @@
 }
 @keyframes typing {
   0% {
-      width: 0;
+    width: 0;
   }
 
   50% {
-      width: 100%;
+    width: 100%;
   }
 }
 /* img top content */
-.imgtopcontent{
+.imgtopcontent {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 /* loader css */
 .custom-loader {
-    width: 70px;
-    height: 70px;
-    background: #ffa600;
-    border-radius: 50px;
-    -webkit-mask: radial-gradient(circle 31px at 50% calc(100% + 13px),#000 95%,#0000) top 4px left 50%,
-      radial-gradient(circle 31px,#000 95%,#0000) center,
-      radial-gradient(circle 31px at 50% -13px,#000 95%,#0000) bottom 4px left 50%,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    -webkit-mask-repeat: no-repeat;
-    animation: cu10 1.5s infinite;
-  }
-  
-  @keyframes cu10 {
-    0% {
-      -webkit-mask-size: 0    18px,0    18px,0    18px,auto
-    }
-  
-    16.67% {
-      -webkit-mask-size: 100% 18px,0    18px,0    18px,auto
-    }
-  
-    33.33% {
-      -webkit-mask-size: 100% 18px,100% 18px,0    18px,auto
-    }
-  
-    50% {
-      -webkit-mask-size: 100% 18px,100% 18px,100% 18px,auto
-    }
-  
-    66.67% {
-      -webkit-mask-size: 0    18px,100% 18px,100% 18px,auto
-    }
-  
-    83.33% {
-      -webkit-mask-size: 0    18px,0    18px,100% 18px,auto
-    }
-  
-    100% {
-      -webkit-mask-size: 0    18px,0    18px,0    18px,auto
-    }
+  width: 70px;
+  height: 70px;
+  background: #ffa600;
+  border-radius: 50px;
+  -webkit-mask: radial-gradient(
+        circle 31px at 50% calc(100% + 13px),
+        #000 95%,
+        #0000
+      )
+      top 4px left 50%,
+    radial-gradient(circle 31px, #000 95%, #0000) center,
+    radial-gradient(circle 31px at 50% -13px, #000 95%, #0000) bottom 4px left
+      50%,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  -webkit-mask-repeat: no-repeat;
+  animation: cu10 1.5s infinite;
+}
+
+@keyframes cu10 {
+  0% {
+    -webkit-mask-size: 0 18px, 0 18px, 0 18px, auto;
   }
 
-  /* button hover orange */
-
-  .btnHoverOrange:hover{
-background-color: #ffa600;
-color: white;
+  16.67% {
+    -webkit-mask-size: 100% 18px, 0 18px, 0 18px, auto;
   }
 
-  /* admin panel box gradient */
-  .boxGradient{
-    background-image: linear-gradient(to right, rgb(238, 169, 104) , rgb(95, 95, 87));
+  33.33% {
+    -webkit-mask-size: 100% 18px, 100% 18px, 0 18px, auto;
   }
 
-  .savehover{
-    color:grey
+  50% {
+    -webkit-mask-size: 100% 18px, 100% 18px, 100% 18px, auto;
   }
-  
-  .savehover:hover{
-    color: #3bacf3;
+
+  66.67% {
+    -webkit-mask-size: 0 18px, 100% 18px, 100% 18px, auto;
   }
-  .searchinput::placeholder{
-    color: grey;
+
+  83.33% {
+    -webkit-mask-size: 0 18px, 0 18px, 100% 18px, auto;
   }
+
+  100% {
+    -webkit-mask-size: 0 18px, 0 18px, 0 18px, auto;
+  }
+}
+
+/* button hover orange */
+
+.btnHoverOrange:hover {
+  background-color: #ffa600;
+  color: white;
+}
+
+/* admin panel box gradient */
+.boxGradient {
+  background-image: linear-gradient(
+    to right,
+    rgb(238, 169, 104),
+    rgb(95, 95, 87)
+  );
+}
+
+.savehover {
+  color: grey;
+}
+
+.savehover:hover {
+  color: #3bacf3;
+}
+.searchinput::placeholder {
+  color: grey;
+}
+/* navbar dropdown hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}

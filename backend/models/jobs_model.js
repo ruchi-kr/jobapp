@@ -17,11 +17,11 @@ const Add_JobsSchema = new mongoose.Schema(
     },   
     salary: {
       type: String,
-      require: [false, "Skills are required"],
+      require: [false],
     },
     jobposted: {
       type: Date,
-      require: [true, "Skills are required"],
+      require: [true, "Date is required"],
     },
     numberofvaccancies: {
       type: Number,
@@ -36,10 +36,10 @@ const Add_JobsSchema = new mongoose.Schema(
       require: false,
     },
     description: {
-      type: String,
-      require: [true, "Description is required"],
+      type: String
+      // require: [true, "Description is required"],
     },
-    aboutcompany: {
+    aboutJobType: {
       type: String,
       require: false,
     },
