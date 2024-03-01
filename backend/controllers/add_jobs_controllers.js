@@ -1,17 +1,6 @@
 const Add_jobs_Model = require("../models/jobs_model")
 const Apply_Job_Model = require("../models/apply_job_model")
 
-// const getData = async (req, res) => {
-//   try {
-//     const data = await Add_jobs_Model.find({});
-//     console.log("data",data);
-//     return res.status(200).send(data);
-//   } 
-//   catch (error) {
-//     console.log(error);
-//   }
-
-// };
 const getData = async (req, res) => {
   try {
     const data = await Add_jobs_Model.find({});

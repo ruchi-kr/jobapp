@@ -110,3 +110,14 @@ color: white;
   .boxGradient{
     background-image: linear-gradient(to right, rgb(238, 169, 104) , rgb(95, 95, 87));
   }
+
+  .savehover{
+    color:grey
+  }
+  
+  .savehover:hover{
+    color: #3bacf3;
+  }
+  .searchinput::placeholder{
+    color: grey;
+  }

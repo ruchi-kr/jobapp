@@ -63,7 +63,7 @@ const EmployerLogin = () => {                              //Login component
                             </div>
                             {/* submit button */}
                             <div className="d-grid gap-2 my-3">
-                                <button className="btn border-0 btn-dark btnHoverOrange" type="submit">Submit</button>
+                                <button className="btn border-light-subtle btn-dark btnHoverOrange" type="submit">Submit</button>
                             </div>
                             <h5 className='text-center'> Don't Have an account? <Link to="/employerRegister">Register Now</Link></h5>
                             <h5 className='text-center'> Forgot Password? <Link to="/forgotpassword">Click Here</Link></h5>

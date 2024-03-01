@@ -74,7 +74,7 @@ const Register = () => {                             //Register component
                             </div>
                             {/* submit button */}
                             <div className="d-grid gap-2 my-3">
-                                <button className="btn border-0 btn-dark btnHoverOrange" type="submit">Submit</button>
+                                <button className="btn border-light-subtle btn-dark btnHoverOrange" type="submit">Submit</button>
                             </div>
                             <h5 className='text-center'> Already Have an account? <Link to="/login">Login</Link></h5>
                         </form>

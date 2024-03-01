@@ -104,14 +104,14 @@ router.post("/forgotpassword", (req, res) => {
 })
 
 
-// router.get("/total_employer", async (req, res) => {
-//     try {
-//         const data = await EmployerModel.find({});
-//         const total_employer = data.length;
-//         return res.status(200).send({total:total_employer});
-//     } catch (error) {
-//         console.log(error);
-//     }
-// });
+router.get("/total_employer", async (req, res) => {
+    try {
+        const data = await EmployerModel.find({});
+        const total_employer = data.length;
+        return res.status(200).send({total:total_employer});
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 module.exports = router;

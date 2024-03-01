@@ -10,7 +10,7 @@ const serverpath = multer.diskStorage({
       cb(null, newFilename);
   },  
   limits: {
-    fileSize: 1024 * 1024 * 5
+    fileSize: 1024 * 1024 * 2
   }
 });
 

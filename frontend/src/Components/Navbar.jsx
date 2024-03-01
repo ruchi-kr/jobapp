@@ -1,9 +1,19 @@
-import React from 'react'                                          //importing React 
+import React, { useState } from 'react'                                          //importing React 
 import { Link, useNavigate } from 'react-router-dom';              //importing Link from react-router-dom
 import { useDispatch } from 'react-redux';                         //importing useDispatch from react-redux
 import Marquee from "react-fast-marquee";                          //importing Marquee
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
 const Navbar = () => {                                             //Navbar component
+
+    const [theme, setTheme] = useState('light');
+
+    const toggleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+    };
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -11,7 +21,6 @@ const Navbar = () => {                                             //Navbar comp
     const user = localStorage.getItem("token");
     const employer = localStorage.getItem("employertoken");
 
-    // for logout using localstorage
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
@@ -32,7 +41,7 @@ const Navbar = () => {                                             //Navbar comp
             </Marquee>
 
             {/* conditional navbar */}
-            <nav className="navbar navbar-expand-xl bg-light text-dark sticky-top">
+            <nav className="navbar navbar-expand-xl bg-secondary-subtle text-dark sticky-top">
                 <div className="container-fluid">
                     <Link to="/" className="navbar-brand fs-3 ms-3 fw-bold" >Dear Job</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,21 +51,25 @@ const Navbar = () => {                                             //Navbar comp
                         <div className="navbar-nav m-1">
 
                             {user ? <>
+                                <Link to='/topjobs' className="nav-link border-0 btn-dark btnHoverOrange" >TOP JOBS</Link>
                                 <Link to='/userhomepage' className="nav-link border-0 btnHoverOrange" >MY ACCOUNT</Link>
                                 <Link to="/" className="nav-link " onClick={() => logout()}>LOGOUT</Link>
+                                <button onClick={toggleTheme} className="btn  border border-0" type="button">Mode</button>
                             </>
                                 :
                                 employer ? <>
+                                 <Link to='/topjobs' className="nav-link border-0 btn-dark btnHoverOrange" >TOP JOBS</Link>
                                     <Link to='/employerhomepage' className="nav-link border-0 btnHoverOrange" >MY ACCOUNT</Link>
                                     <Link to="/" className="nav-link " onClick={() => logout()}>LOGOUT</Link>
+                                    <button onClick={toggleTheme} className="btn  border border-0" type="button">Mode</button>
                                 </>
                                     :
                                     <>
                                         <Link to='/topjobs' className="nav-link border-0 btn-dark btnHoverOrange" >TOP JOBS</Link>
-                                        <Link to='/admindashboard' className="nav-link border-0 btn-dark btnHoverOrange" >ADMIN</Link>
-                                       
+                                        <Link to='/adminlogin' className="nav-link border-0 btn-dark btnHoverOrange" >ADMIN</Link>
+
                                         {/* for job seeker */}
-                                        <div  className="nav-link border-0 btnHoverOrange" >
+                                        <div className="nav-link border-0 btnHoverOrange" >
                                             <div className="btn-group btn-sm" role="group">
                                                 <button type="button" className="btn btn-white border-0 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                     JOB SEEKER
@@ -68,7 +81,7 @@ const Navbar = () => {                                             //Navbar comp
                                             </div>
                                         </div>
                                         {/* for employer */}
-                                        <div  className="nav-link border-0 btnHoverOrange" >
+                                        <div className="nav-link border-0 btnHoverOrange" >
                                             <div className="btn-group btn-sm" role="group">
                                                 <button type="button" className="btn btn-white border-0 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                     FOR EMPLOYER
@@ -79,6 +92,10 @@ const Navbar = () => {                                             //Navbar comp
                                                 </ul>
                                             </div>
                                         </div>
+                                        {/* dark light mode */}
+
+                                        <button onClick={toggleTheme} className="btn  border border-0" type="button">Mode</button>
+
                                     </>
                             }
                         </div>

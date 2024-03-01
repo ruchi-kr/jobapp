@@ -17,6 +17,7 @@ import AddJob from './Pages/AddJob';
 import TopJobs from './Pages/TopJobs';
 import ApplyJob from './Pages/ApplyJob';
 import Dashboard from './Pages/Dashboard';
+import AdminLogin from './Pages/AdminLogin';
 
 function App() {                                  //App component
   return (                                       //returning the JSX
@@ -36,6 +37,7 @@ function App() {                                  //App component
           <Route exact path="/addjob" element={<AddJob />}></Route>
           <Route exact path="/topjobs" element={<TopJobs />}></Route>
           <Route path='/applyjob' element={<ApplyJob />}></Route>
+          <Route path= '/adminlogin' element={<AdminLogin />}></Route>
           <Route exact path="/admindashboard" element={<Dashboard />}></Route>
           <Route exact path="*" element={<PageNotFound />}></Route>
         </Routes>

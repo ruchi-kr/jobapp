@@ -7,10 +7,11 @@ const ApplyJob = () => {
 
     const CONFIG_OBJ = {                                         //config object
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + localStorage.getItem("token")
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("token")
         }
-      }
+    }
+
 
     const [resume, setResume] = useState(null);
     const [fullName, setFullName] = useState("");
@@ -21,13 +22,13 @@ const ApplyJob = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let formData = new FormData();
-         formData.append("resume", resume);
+        formData.append("resume", resume);
         const requestData = { fullName: fullName, phonenumber: contactno, workexperience, email, formData };
         try {
             const response = await axios.post(`${API_BASE_URL}/applyjob`, requestData, CONFIG_OBJ);
-           
+
             if (response.status) {
-                toast.success('Job Applied Successfully !');
+                toast.success('Application Sent Successfully !');
             }
             setFullName('');
             setContactno('');
@@ -47,9 +48,9 @@ const ApplyJob = () => {
         setResume(event.target.files[0]);
     };
     return (
-        <form  enctype="multipart/form-data">
+        <form enctype="multipart/form-data">
             <div className='col-6 mx-auto my-5 shadow-lg p-5'>
-                <h3 className='text-center mb-5 fw-bolder' style={{color:'#ffa600'}}>Apply for Job</h3>
+                <h3 className='text-center mb-5 fw-bolder' style={{ color: '#ffa600' }}>Apply for Job</h3>
                 {/* full name */}
                 <div className="mb-3">
                     <label htmlFor="exampleFormControlInput1" className="form-label">Full Name*</label>
@@ -74,11 +75,12 @@ const ApplyJob = () => {
                 {/* resume */}
                 <div className="mb-3">
                     <label htmlFor="exampleFormControlInput1" className="form-label">Upload Resume</label><br />
-                    <input type="file" accept="images/*" multiple onChange={handleLogo} name="resume" required/>
+                    <input type="file" accept="images/*" multiple onChange={handleLogo} name="resume" required />
                     <div class="form-text" id="basic-addon4">(Only .pdf and .docx are allowed and max size is 2MB)</div>
                 </div>
-                <div class="d-grid my-3">
-                    <button class="btn btn-dark btnHoverOrange border-0" type="submit" onClick={handleSubmit}>Apply</button>
+                <div className="d-grid gap-3 my-3">
+                    <button className="btn btn-dark btnHoverOrange border-light-subtle" type="submit" onClick={handleSubmit}>Send Application</button>
+                    <button className="btn btn-dark btnHoverOrange border-light-subtle" type="submit" onClick={() => navigate('/homepage')}>Cancel</button>
                 </div>
             </div>
         </form>

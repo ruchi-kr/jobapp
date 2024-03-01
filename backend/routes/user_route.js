@@ -103,17 +103,38 @@ router.post("/forgotpassword", (req, res) => {
 
 })
 
-router.get('/allusers', async (req, res) => {
-    const data = await UserModel.find({})
-        .then((users) => {
-            // res.send(users)
-            const total_users = data.length;
-            console.log("data", data);
-            return res.status(200).json({ data, total: total_users });
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+router.get('/users', async (req, res) => {
+    try {
+        const data = await UserModel.find({})
+        const total_users = data.length;
+        console.log("data", data);
+        return res.status(200).json({ data, total: total_users });
+    } catch (error) {
+        console.log(error);
+    }
+
 })
+
+// profile pic uploaded by user
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, '../userpicture')
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, file.fieldname + '-' + Date.now() + "-" + file.originalname)
+//     }
+// })
+
+// let upload = multer({ storage: storage }).single('userprofilepic');
+// router.post ('/userhomepage', upload, (req, res) => {
+//     try {
+//         const user = new UserModel({
+//             image: req.file.filename
+//         });
+//         user.save();
+//     } catch (err) {
+//         console.log(err);
+//     }
+// })
 
 module.exports = router;

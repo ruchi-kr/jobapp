@@ -2,22 +2,30 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "../App.css";
 import { API_BASE_URL } from "../config";
-
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket,faUsers} from "@fortawesome/free-solid-svg-icons";
 export default function Dashboard() {
 
   const [employer,setEmployer] = useState(0)
-//   const [admin] = useState(1)
   const [users,setUsers] = useState(0)
-
+ const [totaljobs,setTotaljobs] = useState(0)
+ const [totalapplied,setTotalapplied] = useState(0)
 
   const fetchAllDetails = async () =>{
-    //    const response1 = await axios.get(`${API_BASE_URL}/totaldata`);
-    const response1 = await axios.get(`${API_BASE_URL}/addjob`);
+       const totalemployerdash = await axios.get(`${API_BASE_URL}/total_employer`);
+       setEmployer(totalemployerdash.data.total)
+     
+       const totaluserdash = await axios.get(`${API_BASE_URL}/users`)
+       setUsers(totaluserdash.data.total)
 
-       setEmployer(response1.data.total)
-      //  setAdmin(response2.data.total)
-       const response3 = await axios.get(`${API_BASE_URL}/`)
-      //  setUsers(response3.data.total)
+       const totaljobposted = await axios.get(`${API_BASE_URL}/addjob`)
+       setTotaljobs(totaljobposted.data.total)
+
+       const totalappliedjob = await axios.get(`${API_BASE_URL}/applyjob`)
+       setTotalapplied(totalappliedjob.data.total)
+
+
   }
   useEffect(function(){
         fetchAllDetails()
@@ -29,8 +37,9 @@ export default function Dashboard() {
       <div className="continer-fluid">
         <div className="row">
           {/* 1st column */}
-          <div className="col-2 p-5">
-            <div className="d-flex align-items-center">
+          <div className="col-2 px-5 py-5">
+          <h5 style={{color:"#ffa600"}}  className="fw-bolder text-uppercase mb-3">dashboard</h5>
+            <div className="d-flex align-items-center">           
               <p className="fw-bolder text-capitalize">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -45,9 +54,10 @@ export default function Dashboard() {
                 profile
               </p>
             </div>
-            <p className="fw-bolder text-capitalize">stats</p>
-            <p className="fw-bolder text-capitalize">admin</p>
-            <p className="fw-bolder text-capitalize">manage users</p>
+          
+            <p className="fw-bolder text-capitalize"><FontAwesomeIcon icon={faUsers} /> manage users</p>
+            <Link to='/adminlogin' className="fw-bolder text-capitalize text-decoration-none text-secondary"><FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</Link>
+
           </div>
           {/* 2nd column */}
           <div className="col-10 p-3 shadow-sm">
@@ -91,7 +101,7 @@ export default function Dashboard() {
                   className="bg-primary m-3 p-4 rounded-3 shadow-lg boxGradient"
                   style={{ width: "50%", height: "80%" }}
                 >
-                  <h3 className="text-white text-center">55</h3>
+                  <h3 className="text-white text-center">{users}</h3>
                   <p className="text-white text-center text-capitalize">
                     Users
                   </p>
@@ -109,9 +119,9 @@ export default function Dashboard() {
                   className="bg-primary m-3 p-4 rounded-3 shadow-lg boxGradient"
                   style={{ width: "50%", height: "80%" }}
                 >
-                  <h3 className="text-white text-center">55</h3>
+                  <h3 className="text-white text-center">{totaljobs}</h3>
                   <p className="text-white text-center text-capitalize">
-                    Total members
+                    Total jobs posted
                   </p>
                 </div>
                 {/* 2 block */}
@@ -119,9 +129,9 @@ export default function Dashboard() {
                   className="bg-primary m-3 p-4 rounded-3 shadow-lg boxGradient"
                   style={{ width: "50%", height: "80%" }}
                 >
-                  <h3 className="text-white text-center">55</h3>
+                  <h3 className="text-white text-center">{totalapplied}</h3>
                   <p className="text-white text-center text-capitalize">
-                    Total members
+                    Total jobs applied
                   </p>
                 </div>
                 {/* 3 block */}
@@ -129,9 +139,9 @@ export default function Dashboard() {
                   className="bg-primary m-3 p-4 rounded-3 shadow-lg boxGradient"
                   style={{ width: "50%", height: "80%" }}
                 >
-                  <h3 className="text-white text-center">55</h3>
+                  <h3 className="text-white text-center">15</h3>
                   <p className="text-white text-center text-capitalize">
-                    Total members
+                    Tech
                   </p>
                 </div>
                 {/* 4 block */}
@@ -139,9 +149,9 @@ export default function Dashboard() {
                   className="bg-primary m-3 p-4 rounded-3 shadow-lg boxGradient"
                   style={{ width: "50%", height: "80%" }}
                 >
-                  <h3 className="text-white text-center">55</h3>
+                  <h3 className="text-white text-center">15</h3>
                   <p className="text-white text-center text-capitalize">
-                    Total members
+                    Non-Tech
                   </p>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import axios from 'axios'
 import { API_BASE_URL } from '../config'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faLocationDot, faIndianRupeeSign, faStar, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { faClipboard } from '@fortawesome/free-regular-svg-icons';
+import { faClipboard,faBookmark } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 import Fuse from 'fuse.js';
 const HomePage = () => {                                   //HomePage component
@@ -38,6 +38,13 @@ const HomePage = () => {                                   //HomePage component
         setSearchLocation(value);
     }
 
+    // const handlesearch = ({ currentTarget = {} }) => {
+    //     const { value1 } = currentTarget;
+    //     setSearch(value1);
+    //     const { value2 } = currentTarget;
+    //         setSearchLocation(value2);
+    // }
+
     useEffect(() => {
         const getAllJob = async () => {
             const response = await axios.get(`${API_BASE_URL}/addjob`)
@@ -55,10 +62,10 @@ const HomePage = () => {                                   //HomePage component
                 <div className='position-absolute imgtopcontent'>
                     <h1 className="display-2 fw-bolder heading mb-3" style={{ color: '#ffa600' }}>Find your dream job now</h1>
                     <form className="d-flex col-10 py-3 mx-auto align-items-center shadow-sm border bg-light border-light-subtle rounded-5 py-2 px-4 " role="search">
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        <input className="form-control me-2 border-0 bg-light" type="search" onChange={handleOnSearch} value={search} placeholder="Skills/Designation/Companies..." aria-label="Search" />
+                        <FontAwesomeIcon className='text-secondary' icon={faMagnifyingGlass} />
+                        <input className="form-control me-2 border-0 bg-light searchinput" type="search" onChange={handleOnSearch} value={search} placeholder="Skills/Designation/Companies..." aria-label="Search" />
                         <p className='my-1 text-secondary'>|</p>
-                        <input className="form-control me-2 border-0 bg-light" type="search" onChange={handleOnSearchlocation} value={searchlocation} placeholder="Enter Location..." aria-label="Search" />
+                        <input className="form-control me-2 border-0 bg-light searchinput" type="search" onChange={handleOnSearchlocation} value={searchlocation} placeholder="Enter Location..." aria-label="Search" />
                         <button className="btn rounded-5 border-0 btn-dark btnHoverOrange" type="submit">Search</button>
                     </form>
                 </div>
@@ -69,9 +76,16 @@ const HomePage = () => {                                   //HomePage component
                         {outputSearch.map((job, index) => {
                             return (
                                 <>
-                                    <div className='border-0 rounded-4 shadow-lg m-5 p-5' key={job._id}>
+                                    <div className='border-0 rounded-4 shadow-lg m-5 p-5 bg-white' key={job._id}>
                                         <h6 className='fw-bold text-uppercase' style={{ color: "#ffa600" }}>{job.title}</h6>
+                                        <div className="row">
+                                        <div className="col-8">
                                         <p className='lh-1c fw-bold text-uppercase'>{job.companyname} <FontAwesomeIcon icon={faStar} size='xs' style={{ color: "#ffa600" }} /></p>
+                                        </div>
+                                        <div className="col-4 d-flex align-items-center justify-content-end ">
+                                        <p className='text-end text-lowercase savehover'><FontAwesomeIcon icon={faBookmark} size='sm' /> save job</p>
+                                        </div>
+                                        </div>
 
                                         <div className="row ">
                                             <div className="col-12 d-flex gap-3 justify-content-start align-items-center">
@@ -84,7 +98,7 @@ const HomePage = () => {                                   //HomePage component
                                         </div>
                                         <p className='lh-1 text-truncate text-capitalize'><FontAwesomeIcon className='text-secondary' icon={faClipboard} /> {job.description}</p>
                                         <p className='lh-1 text-capitalize'>Skills :{job.skills}</p>
-                                        {/* <p className='lh-1 text-capitalize'>Company Type :{job.aboutcompany}</p> */}
+                                        
                                         <div className="row">
                                             <div className="col-8">
                                                 <p className='lh-1'>No. of Vaccancy :{job.numberofvaccancies}</p>

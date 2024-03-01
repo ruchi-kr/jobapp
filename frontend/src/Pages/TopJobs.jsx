@@ -20,13 +20,13 @@ const TopJobs = () => {
         <>                                          {/* fragment tag*/}
             <div className="container">
                 <div className="row">
+                <h2 className="text-center mt-5 mx-2 text-bolder text-uppercase col-12">TOP 5 jobS</h2>
                     <div className="col-12 col-md-10 col-lg-7 my-5 text-dark mx-auto">
-                        <h2 className="text-center my-5 mx-2 text-bolder text-uppercase col-12">TOP 5 jobS</h2>
-                       
+                                          
                         {topjobs.map((job, index) => {
                             return (
                                 <>
-                                    <div className='border-0 rounded-4 shadow-lg m-5 p-5' key={job._id}>
+                                    <div className='border-0 rounded-4 shadow-lg m-5 p-5 bg-white' key={job._id}>
                                         <h6 className='fw-bold text-uppercase' style={{ color: "#ffa600" }}>{job.title}</h6>
                                         <p className='lh-1c fw-bold text-uppercase'>{job.companyname} <FontAwesomeIcon icon={faStar} size='xs' style={{ color: "#ffa600" }} /></p>
 

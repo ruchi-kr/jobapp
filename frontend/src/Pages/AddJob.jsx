@@ -39,7 +39,7 @@ export default function AddJob() {
       aboutcompany: aboutCompany
     }
 
-    await axios.post(`${API_BASE_URL}/addjob`, body);
+    await axios.post(`${API_BASE_URL}/addjob`, body, CONFIG_OBJ);
     toast.success('Job Added Successfully!');
     navigate('/employerhomepage')
   }
@@ -172,17 +172,17 @@ export default function AddJob() {
           />
         </div>
 
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
+        <div className="d-grid gap-3 my-3">
           <button
             type="button"
-            className="btn btn-outline-success col-3  shadow-lg mx-auto"
+            className="btn btn-dark btnHoverOrange border-light-subtle"
             onClick={handleSubmit}
           >
             Submit
           </button>
           <button
             type="button"
-            className="btn btn-outline-warning col-3  shadow-lg mx-auto"
+            className="btn btn-dark btnHoverOrange border-light-subtle"
             onClick={handleReset}
           >
             Reset

@@ -6,7 +6,16 @@ import {toast} from 'react-toastify';
 import { API_BASE_URL } from '../config';
 import {Dialog,DialogActions,DialogContent} from "@mui/material";
 import Swal from 'sweetalert2';
+
 export default function DisplayJob() {
+
+  const CONFIG_OBJ = {                                         //config object
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("employertoken")
+    }
+  }
+
   let navigate = useNavigate();
 
   const [data, setData] = useState([]);
@@ -27,7 +36,7 @@ export default function DisplayJob() {
   const fetchAllData = async () => {
     let response = await axios.get(`${API_BASE_URL}/addjob`);
     console.log("response:", response);
-    setData(response.data);
+    setData(response.data.data);
   };
   useEffect(function () {
     fetchAllData();
@@ -69,7 +78,7 @@ export default function DisplayJob() {
     };
     console.log("rrrrr", jobId);
 
-    const response = await axios.patch(`${API_BASE_URL}/addjob/${jobId}`,body);
+    const response = await axios.patch(`${API_BASE_URL}/addjob/${jobId}`,body,CONFIG_OBJ);
     if (response.status) {
     toast.success('Data Updated Successfully')
       fetchAllData();
@@ -225,7 +234,7 @@ export default function DisplayJob() {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-       result = await axios.delete(`${API_BASE_URL}/addjob/${rowData._id}`);
+       result = await axios.delete(`${API_BASE_URL}/addjob/${rowData._id}`,CONFIG_OBJ);
         if (result.status) {
           Swal.fire("Deleted!", "Job has been deleted.", "success");
           fetchAllData();

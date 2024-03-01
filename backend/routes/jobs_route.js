@@ -2,15 +2,14 @@
 const protectedRoute = require("../middleware/protectedResource");
 
 const express = require("express")
-const { getData, postData, deleteData, patchData, getTotalData } = require("../controllers/add_jobs_controllers")
+const { getData, postData, deleteData, patchData } = require("../controllers/add_jobs_controllers")
 const Add_jobs_Model = require("../models/jobs_model");
-const employerprotectedResource = require("../middleware/employerprotectedResource,js");
+const employerprotectedResource = require("../middleware/employerprotectedResource");
 const router = express.Router()
 
 //add jobs only from logged in user
 
 router.get('/', getData)
-// router.get('/',getTotalData)
 router.post('/',employerprotectedResource,postData)
 router.delete('/:id',employerprotectedResource,deleteData)
 router.patch('/:id',employerprotectedResource,patchData)

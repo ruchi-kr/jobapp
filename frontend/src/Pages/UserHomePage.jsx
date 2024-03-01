@@ -4,6 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 
 const UserHomePage = () => {
+    const CONFIG_OBJ = {                                         //config object
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+    }
     const studentuser = JSON.parse(localStorage.getItem("studentuser"));
 
     return (
@@ -12,7 +18,10 @@ const UserHomePage = () => {
                 <div className="row">
                     <div className="col-8">
                         <img width="80px" height="80px" style={{ borderColor: "#ffa600" }} className='img-thumbnail rounded-circle' src="" alt="userprofile" />
-                        <button className='btn-sm border-0 mx-4' onClick=""><FontAwesomeIcon icon={faEdit} />Upload image</button>
+                        <form method="post" enctype="multipart/form-data">
+                            <input name="userprofilepic" className="form-control col-3" type="file" id="formFile" />
+                            <button className='btn-sm border-0 mx-4' type='submit'><FontAwesomeIcon icon={faEdit} />Upload image</button>
+                        </form>
                     </div>
                 </div>
                 <div className="row">
