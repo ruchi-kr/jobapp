@@ -4,7 +4,7 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import DisplayJob from './DisplayJob'
 
 const EmployerHomePage = () => {
-    const employerdetail = JSON.parse(localStorage.getItem("employer"));
+    const employerdetail = JSON.parse(localStorage.getItem("employerdata"));
     
     return (
         <>
