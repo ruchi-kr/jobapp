@@ -33,7 +33,7 @@ const Add_JobsSchema = new mongoose.Schema(
     },
     experience: {
       type: String,
-      require: false,
+      require: true,
     },
     description: {
       type: String

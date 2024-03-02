@@ -60,9 +60,10 @@ export default function AddJob() {
   return (
     <form action="submit">
       <div className="col-6 m-5 p-3 shadow-lg mx-auto">
-        <h1>Add Jobs</h1>
+        <h1 className="text-center text-bolder my-5" style={{ color: '#ffa600' }}>Add Jobs</h1>                     
 
         <div className="mb-3">
+        <label htmlFor="exampleFormControlInput1" className="form-label">Job Title*</label>
           <input
             type="text"
             className="form-control"
@@ -74,6 +75,7 @@ export default function AddJob() {
         </div>
 
         <div className="mb-3">
+        <label htmlFor="exampleFormControlInput2" className="form-label">Company Name*</label>
           <input
             type="text"
             className="form-control"
@@ -85,6 +87,8 @@ export default function AddJob() {
         </div>
 
         <div className="mb-3">
+        <label htmlFor="exampleFormControlInput3" className="form-label">Skills Required*</label>
+      
           <input
             type="text"
             className="form-control"
@@ -96,10 +100,12 @@ export default function AddJob() {
         </div>
 
         <div className="mb-3">
+        <label htmlFor="exampleFormControlInput4" className="form-label">Salary(in CTC)</label>
+         
           <input
             type="text"
             className="form-control"
-            id="exampleFormControlInput3"
+            id="exampleFormControlInput4"
             placeholder="Salary "
             value={salary}
             onChange={(e) => setSalary(e.target.value)}
@@ -107,21 +113,22 @@ export default function AddJob() {
         </div>
 
         <div className="mb-3">
+        <label htmlFor="exampleFormControlInput5" className="form-label">Date*</label>
           <input
             type="date"
             className="form-control"
-            id="exampleFormControlInput3"
-            placeholder=" Job Posted*"
+            id="exampleFormControlInput5"
             value={jobPosted}
             onChange={(e) => setJobPosted(e.target.value)}
           required/>
         </div>
 
         <div className="mb-3">
+        <label htmlFor="exampleFormControlInput6" className="form-label">Number Of Vaccancies</label>
           <input
-            type="text"
+            type="number"
             className="form-control"
-            id="exampleFormControlInput3"
+            id="exampleFormControlInput6"
             placeholder="Number Of Vaccancies"
             value={numberOfVaccancies}
             onChange={(e) => setNumberOfVaccancies(e.target.value)}
@@ -129,10 +136,12 @@ export default function AddJob() {
         </div>
 
         <div className="mb-3">
+        <label htmlFor="exampleFormControlInput7" className="form-label">Location*</label>
+
           <input
             type="text"
             className="form-control"
-            id="exampleFormControlInput3"
+            id="exampleFormControlInput7"
             placeholder="Location*"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
@@ -140,21 +149,24 @@ export default function AddJob() {
         </div>
 
         <div className="mb-3">
+        <label htmlFor="exampleFormControlInput8" className="form-label">Experience(in years)*</label>
+
           <input
             type="number"
             className="form-control"
-            id="exampleFormControlInput3"
+            id="exampleFormControlInput8"
             placeholder="Experience"
             value={experience}
             onChange={(e) => setExperience(e.target.value)}
-          />
+          required/>
         </div>
 
         <div className="mb-3">
+        <label htmlFor="exampleFormControlInput9" className="form-label">Description</label>
           <input
             type="text"
             className="form-control"
-            id="exampleFormControlInput3"
+            id="exampleFormControlInput9"
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}

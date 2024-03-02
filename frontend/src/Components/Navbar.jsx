@@ -20,6 +20,9 @@ const Navbar = () => {                                             //Navbar comp
 
     const user = localStorage.getItem("token");
     const employer = localStorage.getItem("employertoken");
+    
+    // const user = localStorage.getItem("user");
+    // const employer = localStorage.getItem("employer");
 
     const logout = () => {
         localStorage.removeItem("token");

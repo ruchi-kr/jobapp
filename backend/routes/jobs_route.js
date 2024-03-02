@@ -23,6 +23,19 @@ router.get("/topjobs", async (req, res) => {
 
 });
 
+//for job type
+router.get('/aboutjobtype',async (req,res)=>{
+    try {
+        const data = await Add_jobs_Model.find({aboutJobType:'tech'});
+        const total_tech_jobs = data.length;
+        console.log("data",data);
+        console.log("total:",total_tech_jobs)
+        return res.status(200).json({data, total: total_tech_jobs});
+      }
+      catch (error) {
+        console.log(error);
+      }
+})
 
 
 module.exports = router;

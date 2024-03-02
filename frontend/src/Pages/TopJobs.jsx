@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'                            //i
 import axios from 'axios'
 import { API_BASE_URL } from '../config'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faLocationDot, faIndianRupeeSign, faStar, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faLocationDot, faIndianRupeeSign, faStar } from '@fortawesome/free-solid-svg-icons';
 import { faClipboard } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 const TopJobs = () => {

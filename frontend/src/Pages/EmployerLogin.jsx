@@ -24,7 +24,7 @@ const EmployerLogin = () => {                              //Login component
                 if (result.status === 200) {
                     setLoading(false);
                     localStorage.setItem("employertoken", result.data.result.token);
-                    localStorage.setItem('employer', JSON.stringify(result.data.result.user));
+                    localStorage.setItem('user', JSON.stringify(result.data.result.user));
                     dispatch({ type: 'LOGIN_SUCCESS', payload: result.data.result.user });
                     setLoading(false);
                     toast.success('Employer Logged In Successfully!');

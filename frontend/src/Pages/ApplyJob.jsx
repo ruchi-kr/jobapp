@@ -23,7 +23,7 @@ const ApplyJob = () => {
         e.preventDefault();
         let formData = new FormData();
         formData.append("resume", resume);
-        const requestData = { fullName: fullName, phonenumber: contactno, workexperience, email, formData };
+        const requestData = { fullName: fullName, phonenumber: contactno, workexperience, email,formData };
         try {
             const response = await axios.post(`${API_BASE_URL}/applyjob`, requestData, CONFIG_OBJ);
 
@@ -75,7 +75,7 @@ const ApplyJob = () => {
                 {/* resume */}
                 <div className="mb-3">
                     <label htmlFor="exampleFormControlInput1" className="form-label">Upload Resume</label><br />
-                    <input type="file" accept="images/*" multiple onChange={handleLogo} name="resume" required />
+                    <input type="file" accept="resumes/*" multiple onChange={handleLogo} name="resume" required />
                     <div class="form-text" id="basic-addon4">(Only .pdf and .docx are allowed and max size is 2MB)</div>
                 </div>
                 <div className="d-grid gap-3 my-3">

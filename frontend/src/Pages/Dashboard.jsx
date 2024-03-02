@@ -11,30 +11,33 @@ export default function Dashboard() {
   const [users,setUsers] = useState(0)
  const [totaljobs,setTotaljobs] = useState(0)
  const [totalapplied,setTotalapplied] = useState(0)
-
+ const [totaltech,setTotalTechJobs] = useState(0)
   const fetchAllDetails = async () =>{
        const totalemployerdash = await axios.get(`${API_BASE_URL}/total_employer`);
        setEmployer(totalemployerdash.data.total)
      
-       const totaluserdash = await axios.get(`${API_BASE_URL}/users`)
+       const totaluserdash = await axios.get(`${API_BASE_URL}/users`);
        setUsers(totaluserdash.data.total)
 
-       const totaljobposted = await axios.get(`${API_BASE_URL}/addjob`)
+       const totaljobposted = await axios.get(`${API_BASE_URL}/addjob`);
        setTotaljobs(totaljobposted.data.total)
 
-       const totalappliedjob = await axios.get(`${API_BASE_URL}/applyjob`)
+       const totalappliedjob = await axios.get(`${API_BASE_URL}/applyjob`);
        setTotalapplied(totalappliedjob.data.total)
 
-
+       const totaltechjobs = await axios.get(`${API_BASE_URL}/aboutjobtype`);
+       setTotalTechJobs(totaltechjobs.data.total)
   }
+
+  
   useEffect(function(){
         fetchAllDetails()
   },[])
-
-  const members = 1 + employer + users
+  const totalnontechjobs = totaljobs - totaltech;
+  const members = 1 + employer + users;
   return (
     <>
-      <div className="continer-fluid">
+      <div className="continer-fluid mb-5">
         <div className="row">
           {/* 1st column */}
           <div className="col-2 px-5 py-5">
@@ -64,7 +67,7 @@ export default function Dashboard() {
             {/* 1st row */}
             <div className="row">
               {/* user info block */}
-              <h5 className="text-dark text-uppercase m-3">user info</h5>
+              <h5 className="text-uppercase m-3">user info</h5>
               <div className="col-10 my-3 mx-1 d-flex ">
                 {/* 1 block */}
                 <div
@@ -112,7 +115,7 @@ export default function Dashboard() {
 
             <div className="row">
               {/* job info block */}
-              <h5 className="text-dark text-uppercase m-3">job info</h5>
+              <h5 className="text-uppercase m-3">job info</h5>
               <div className="col-10 my-3 mx-1 d-flex ">
                 {/* 1 block */}
                 <div
@@ -139,9 +142,9 @@ export default function Dashboard() {
                   className="bg-primary m-3 p-4 rounded-3 shadow-lg boxGradient"
                   style={{ width: "50%", height: "80%" }}
                 >
-                  <h3 className="text-white text-center">15</h3>
+                  <h3 className="text-white text-center">{totaltech}</h3>
                   <p className="text-white text-center text-capitalize">
-                    Tech
+                    Tech jobs posted
                   </p>
                 </div>
                 {/* 4 block */}
@@ -149,9 +152,9 @@ export default function Dashboard() {
                   className="bg-primary m-3 p-4 rounded-3 shadow-lg boxGradient"
                   style={{ width: "50%", height: "80%" }}
                 >
-                  <h3 className="text-white text-center">15</h3>
+                  <h3 className="text-white text-center">{totalnontechjobs}</h3>
                   <p className="text-white text-center text-capitalize">
-                    Non-Tech
+                    Non-Tech jobs posted
                   </p>
                 </div>
               </div>
